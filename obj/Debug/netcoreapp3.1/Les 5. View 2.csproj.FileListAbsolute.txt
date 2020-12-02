@@ -1,0 +1,26 @@
+C:\Users\Globa\source\repos\ConsoleApp13\Les 5. View 2\bin\Debug\netcoreapp3.1\Les 5. View 2.exe
+C:\Users\Globa\source\repos\ConsoleApp13\Les 5. View 2\bin\Debug\netcoreapp3.1\Les 5. View 2.deps.json
+C:\Users\Globa\source\repos\ConsoleApp13\Les 5. View 2\bin\Debug\netcoreapp3.1\Les 5. View 2.runtimeconfig.json
+C:\Users\Globa\source\repos\ConsoleApp13\Les 5. View 2\bin\Debug\netcoreapp3.1\Les 5. View 2.runtimeconfig.dev.json
+C:\Users\Globa\source\repos\ConsoleApp13\Les 5. View 2\bin\Debug\netcoreapp3.1\Les 5. View 2.dll
+C:\Users\Globa\source\repos\ConsoleApp13\Les 5. View 2\bin\Debug\netcoreapp3.1\Les 5. View 2.pdb
+C:\Users\Globa\source\repos\ConsoleApp13\Les 5. View 2\obj\Debug\netcoreapp3.1\Les 5. View 2.AssemblyInfoInputs.cache
+C:\Users\Globa\source\repos\ConsoleApp13\Les 5. View 2\obj\Debug\netcoreapp3.1\Les 5. View 2.AssemblyInfo.cs
+C:\Users\Globa\source\repos\ConsoleApp13\Les 5. View 2\obj\Debug\netcoreapp3.1\Les 5. View 2.csproj.CoreCompileInputs.cache
+C:\Users\Globa\source\repos\ConsoleApp13\Les 5. View 2\obj\Debug\netcoreapp3.1\Les 5. View 2.dll
+C:\Users\Globa\source\repos\ConsoleApp13\Les 5. View 2\obj\Debug\netcoreapp3.1\Les 5. View 2.pdb
+C:\Users\Globa\source\repos\ConsoleApp13\Les 5. View 2\obj\Debug\netcoreapp3.1\Les 5. View 2.genruntimeconfig.cache
+C:\Users\Globa\source\repos\ConsoleApp13\Les 5. View 2\obj\Debug\netcoreapp3.1\Les 5. View 2.csprojAssemblyReference.cache
+C:\MiniChess\bin\Debug\netcoreapp3.1\Les 5. View 2.exe
+C:\MiniChess\bin\Debug\netcoreapp3.1\Les 5. View 2.deps.json
+C:\MiniChess\bin\Debug\netcoreapp3.1\Les 5. View 2.runtimeconfig.json
+C:\MiniChess\bin\Debug\netcoreapp3.1\Les 5. View 2.runtimeconfig.dev.json
+C:\MiniChess\bin\Debug\netcoreapp3.1\Les 5. View 2.dll
+C:\MiniChess\bin\Debug\netcoreapp3.1\Les 5. View 2.pdb
+C:\MiniChess\obj\Debug\netcoreapp3.1\Les 5. View 2.csprojAssemblyReference.cache
+C:\MiniChess\obj\Debug\netcoreapp3.1\Les 5. View 2.AssemblyInfoInputs.cache
+C:\MiniChess\obj\Debug\netcoreapp3.1\Les 5. View 2.AssemblyInfo.cs
+C:\MiniChess\obj\Debug\netcoreapp3.1\Les 5. View 2.csproj.CoreCompileInputs.cache
+C:\MiniChess\obj\Debug\netcoreapp3.1\Les 5. View 2.dll
+C:\MiniChess\obj\Debug\netcoreapp3.1\Les 5. View 2.pdb
+C:\MiniChess\obj\Debug\netcoreapp3.1\Les 5. View 2.genruntimeconfig.cache
