@@ -17,7 +17,7 @@ namespace Les_5._View_2
 
         public override void Move(byte Board_width, byte Board_height, List<Figura> Players_allies, Board board, List<Figura> Enemy_players)
         {
-            bool availabe = Availabe_Move(Board_width, Board_height, Players_allies, board);
+            bool availabe = Availabe_Move(Board_width, Board_height, Players_allies, board, 1);
             if (availabe == true)
             {
                 ConsoleKeyInfo key;
@@ -64,7 +64,7 @@ namespace Les_5._View_2
             }
 
         }
-        public override bool Availabe_Move(byte Board_width, byte Board_height, List<Figura> Players_allies, Board board)
+        public override bool Availabe_Move(byte Board_width, byte Board_height, List<Figura> Players_allies, Board board, byte mode)
         {
             bool availabe = true;
             up_Left = true;
@@ -75,7 +75,7 @@ namespace Les_5._View_2
             {
                 foreach (Figura player in Players_allies)
                 {
-                    if (player.cursor_Width == cursor_Width - 1 && player.cursor_Height == cursor_Height - 1)
+                    if (player.cursor_Width == cursor_Width - 1 && player.cursor_Height == cursor_Height - 1 && player.life == true)
                     {
                         up_Left = false;
                     }
@@ -84,11 +84,11 @@ namespace Les_5._View_2
             else
                 up_Left = false;
 
-            if (cursor_Width + 1 <= Board_width && cursor_Height - 1 >= 0)
+            if (cursor_Width + 1 < Board_width && cursor_Height - 1 >= 0)
             {
                 foreach (Figura player in Players_allies)
                 {
-                    if (player.cursor_Width == cursor_Width + 1 && player.cursor_Height == cursor_Height - 1)
+                    if (player.cursor_Width == cursor_Width + 1 && player.cursor_Height == cursor_Height - 1 && player.life == true)
                     {
                         up_Right = false;
                     }
@@ -97,12 +97,12 @@ namespace Les_5._View_2
             else
                 up_Right = false;
 
-            if (cursor_Width - 1 >= 0 && cursor_Height + 1 < Board_height)
+            if (cursor_Width - 1 >= 0 && cursor_Height + 1 <= Board_height)
             {
 
                 foreach (Figura player in Players_allies)
                 {
-                    if (player.cursor_Width == cursor_Width - 1 && player.cursor_Height == cursor_Height + 1)
+                    if (player.cursor_Width == cursor_Width - 1 && player.cursor_Height == cursor_Height + 1 && player.life == true)
                     {
                         down_Left = false;
                     }
@@ -111,11 +111,11 @@ namespace Les_5._View_2
             else
                 down_Left = false;
 
-            if (cursor_Width + 1 < Board_width && cursor_Height + 1 < Board_height)
+            if (cursor_Width + 1 < Board_width && cursor_Height + 1 <= Board_height )
             {
                 foreach (Figura player in Players_allies)
                 {
-                    if (player.cursor_Width == cursor_Width + 1 && player.cursor_Height == cursor_Height + 1)
+                    if (player.cursor_Width == cursor_Width + 1 && player.cursor_Height == cursor_Height + 1 && player.life == true)
                     {
                         down_Right = false;
                     }
@@ -125,9 +125,12 @@ namespace Les_5._View_2
                 down_Right = false;
 
 
-            if (up_Left == true || up_Right == true || down_Left == true || down_Right == true)
+            if (up_Left == true || up_Right == true || down_Left == true || down_Right == true )
             {
-                board.Paint_availabe_moves(cursor_Width, cursor_Height, up_Left, up_Right, down_Left, down_Right, type, false);
+                if(mode == 1)
+                {
+                    board.Paint_availabe_moves(cursor_Width, cursor_Height, up_Left, up_Right, down_Left, down_Right, type, false);
+                }
             }
             else
             {

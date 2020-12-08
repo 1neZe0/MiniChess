@@ -13,11 +13,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\MiniChess\\Les 5. View 2.csproj",
+      "projectUniqueName": "C:\\Howeworks Course Projects\\MiniChess\\Les 5. View 2.csproj",
       "projectName": "Les 5. View 2",
-      "projectPath": "C:\\MiniChess\\Les 5. View 2.csproj",
+      "projectPath": "C:\\Howeworks Course Projects\\MiniChess\\Les 5. View 2.csproj",
       "packagesPath": "C:\\Users\\Globa\\.nuget\\packages\\",
-      "outputPath": "C:\\MiniChess\\obj\\",
+      "outputPath": "C:\\Howeworks Course Projects\\MiniChess\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\Globa\\AppData\\Roaming\\NuGet\\NuGet.Config",

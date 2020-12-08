@@ -70,7 +70,7 @@ namespace Les_5._View_2
 
         public abstract void Move(byte Board_width, byte Board_height, List<Figura> Players_allies, Board board, List<Figura> Enemy_players);
 
-        public abstract bool Availabe_Move(byte Board_width, byte Board_height, List<Figura> Players_allies, Board board);
+        public abstract bool Availabe_Move(byte Board_width, byte Board_height, List<Figura> Players_allies, Board board, byte mode);
 
         protected void Check_Enemy_On_Player_Position(List<Figura> Enemy_players)
         {

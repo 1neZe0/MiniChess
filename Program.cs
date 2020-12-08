@@ -18,6 +18,7 @@ namespace Les_5._View_2
             game.init();
             game.Game_Start();
             Console.ReadKey();
+            Console.ReadKey();
         }
     }
 }

@@ -40,9 +40,11 @@ namespace Les_5._View_2
         {
             for (byte i = 0; i < width; i++)
             {
+                
                 for (byte j = 0; j < height; j++)
                 {
                     Console.SetCursorPosition(i, j);
+                    Console.ForegroundColor = ConsoleColor.Yellow;
                     Console.WriteLine('.');
                 }
             }
@@ -82,33 +84,25 @@ namespace Les_5._View_2
             Console.Write("control");
 
 
-            Console.SetCursorPosition(14, height + 5);
+            Console.SetCursorPosition(15, height + 5);
             Console.Write((char)24);
-            Console.SetCursorPosition(13, height + 5);
-            Console.Write((char)17);
-            Console.SetCursorPosition(13, height + 4);
-            Console.Write("Q");
+            Console.SetCursorPosition(15, height + 4);
+            Console.Write('W');
 
-            Console.SetCursorPosition(16, height + 5);
-            Console.Write((char)24);
-            Console.SetCursorPosition(17, height + 5);
-            Console.Write((char)16);
-            Console.SetCursorPosition(17, height + 4);
-            Console.Write("W");
-
-            Console.SetCursorPosition(14, height + 6);
+            Console.SetCursorPosition(15, height + 7);
             Console.Write((char)25);
+            Console.SetCursorPosition(15, height + 8);
+            Console.Write('S');
+
             Console.SetCursorPosition(13, height + 6);
             Console.Write((char)17);
-            Console.SetCursorPosition(13, height + 7);
-            Console.Write("A");
+            Console.SetCursorPosition(12, height + 6);
+            Console.Write('A');
 
-            Console.SetCursorPosition(16, height + 6);
-            Console.Write((char)25);
             Console.SetCursorPosition(17, height + 6);
             Console.Write((char)16);
-            Console.SetCursorPosition(17, height + 7);
-            Console.Write("S");
+            Console.SetCursorPosition(18, height + 6);
+            Console.Write('D');
             #endregion
 
             #region Player Choose
@@ -174,7 +168,6 @@ namespace Les_5._View_2
                         blue_queens++;
                 }
             }
-
             Players_Information_Print();
             return Check_Player_Count();
         }
@@ -203,14 +196,15 @@ namespace Les_5._View_2
 
         private void Players_Information_Print()
         {
-            Console.BackgroundColor = ConsoleColor.Red;
-            Console.SetCursorPosition(width + 1, height - (height / 3)); Console.WriteLine($"Red count:{red_players_count}");
-            Console.SetCursorPosition(width + 1, height - (height / 3) + 1); Console.Write($"K:{red_kings} Q:{red_queens}");
-
-
             Console.BackgroundColor = ConsoleColor.Blue;
-            Console.SetCursorPosition(width + 1, height - (height / 3 * 2)); Console.WriteLine($"Blue count:{blue_players_count}");
-            Console.SetCursorPosition(width + 1, height - (height / 3 * 2) + 1); Console.Write($"K:{blue_kings} Q:{blue_queens}");
+            Console.SetCursorPosition(width, height - (height / 3)); Console.WriteLine($" Blue count:{blue_players_count}  ");
+            Console.SetCursorPosition(width + 2, height - (height / 3) + 1); Console.Write($" K:{blue_kings:##} Q:{blue_queens} ");
+
+
+            Console.BackgroundColor = ConsoleColor.Red;
+            Console.SetCursorPosition(width, height - (height / 3 * 2)); Console.WriteLine($" Red count:{red_players_count}   ");
+            Console.SetCursorPosition(width + 2, height - (height / 3 * 2) + 1); Console.Write($" K:{red_kings} Q:{red_queens} ");
+
 
 
         }
@@ -220,7 +214,7 @@ namespace Les_5._View_2
         
 
 
-        #region Player painting
+        #region Player painting and settings
 
 
         public void Player_paint(byte Width, byte Height, bool Blue_Red, byte type)
@@ -257,7 +251,7 @@ namespace Les_5._View_2
             }
             else if(Type == 2)
             {
-                Console.SetCursorPosition(15, height + 5);
+                Console.SetCursorPosition(15, height + 6);
             }
             Thread.Sleep(500);
             Move_Painter(Type, Player_Width_Position, Player_Height_Position, Check_or_Go);
@@ -347,7 +341,7 @@ namespace Les_5._View_2
                     }
                 }
             }
-            else if(Type == 2)
+            else if (Type == 2)
             {
                 if (Up__or__Up_Right == true)
                 {
@@ -421,6 +415,7 @@ namespace Les_5._View_2
         public void Player_Move_Paint(byte Later_Width, byte Later_Height, byte New_Width, byte New_Height, bool Blue_Red, byte Type)
         {
             Console.SetCursorPosition(Later_Width, Later_Height);
+            Console.BackgroundColor = ConsoleColor.Black;
             Console.WriteLine('.');
             Player_paint(New_Width, New_Height, Blue_Red, Type);
         }

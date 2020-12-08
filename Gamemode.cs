@@ -11,15 +11,19 @@ namespace Les_5._View_2
         List<Figura> red_players;
         List<Figura> blue_players;
         Board board;
+        byte player_choose_red;
+        byte player_choose_blue;
 
 
         public Gamemode(byte Board_Width, byte Board_Height)
         {
             red_players = new List<Figura>();
             blue_players = new List<Figura>();
+            player_choose_red = 0;
+            player_choose_blue = 0;
 
-            board_width = Board_Width < 20 || Board_Width > 60 ? (byte)20 : Board_Width;
-            board_height = Board_Width < 10 || Board_Width > 40 ? (byte)10 : Board_Height;
+            board_width = Board_Width <= 20 || Board_Width > 100 ? (byte)20 : Board_Width;
+            board_height = Board_Height <= 10 || Board_Height > 35 ? (byte)10 : Board_Height;
             board = new Board(board_width, board_height);
         }
         public void init()
@@ -33,14 +37,18 @@ namespace Les_5._View_2
             bool Game_Players_Check = board.Game_Players_Check(red_players, blue_players);
             while (true)
             {
-                red_players[Choose_Number_Of_Player(red_players)].Move(board_width, board_height, red_players, board, blue_players);
+                red_players[Choose_Number_Of_Player(red_players, true)].Move(board_width, board_height, red_players, board, blue_players);
+
                 Game_Players_Check = board.Game_Players_Check(red_players, blue_players);
                 if (Game_Players_Check == true)
                 {
                     break;
                 }
 
-                blue_players[Choose_Number_Of_Player(blue_players)].Move(board_width, board_height, blue_players, board, red_players);
+
+
+                blue_players[Choose_Number_Of_Player(blue_players, false)].Move(board_width, board_height, blue_players, board, red_players);
+
                 Game_Players_Check = board.Game_Players_Check(red_players, blue_players);
                 if (Game_Players_Check == true)
                 {
@@ -79,65 +87,116 @@ namespace Les_5._View_2
             }
 
         }
-        public byte Choose_Number_Of_Player(List<Figura> players)
+        public byte Choose_Number_Of_Player(List<Figura> players, bool blue_red)
         {
-            byte i = 0;
-            ConsoleKeyInfo key;
-            foreach(Figura player in players)
+            byte player_choose = 0;
+            if (blue_red == false)
+                player_choose = player_choose_blue;
+            else
+                player_choose = player_choose_red;
+            
+            bool Left_Right = false;
+            while (true)
             {
-                if(player.life == true)
+                if(players[player_choose].life == true)
                 {
                     break;
                 }
-                i++;
+                else
+                {
+                    if(Left_Right == false)
+                    {
+                        if(player_choose - 1 < 0)
+                        {
+                            Left_Right = true;
+                        }
+                        else
+                            player_choose--;
+                    }
+                    else
+                    {
+                        if (player_choose + 1 == board_width)
+                        {
+                            Left_Right = false;
+                        }
+                        else
+                            player_choose++;
+                    }
+                }
             }
-            for ( ; ;)
+            byte wrong = 0;
+            ConsoleKeyInfo key;
+            while (true)
             {
-                if(players[i].life == true)
+                board.Move_Painter(players[player_choose].type, players[player_choose].cursor_Width, players[player_choose].cursor_Height, false);
+
+                Console.SetCursorPosition(27, board_height + 7);
+                key = Console.ReadKey(true);
+
+                if (player_choose < board_width - 1 && key.Key == ConsoleKey.D)
                 {
-                    board.Move_Painter(players[i].type, players[i].cursor_Width, players[i].cursor_Height, false);
+                    wrong = player_choose;
+                    board.Player_paint(players[player_choose].cursor_Width, players[player_choose].cursor_Height, players[player_choose].blue_red, players[player_choose].type);
+                    while (true)
+                    {
+                        player_choose++;
+                        if (player_choose == board_width - 1 && players[player_choose].life == false)
+                        {
+                            player_choose = wrong;
+                            break;
+                        }
+
+                        if (players[player_choose].life == true)
+                        {
+                            break;
+                        }
+                    }
                 }
-                while (true)
+
+
+                if (player_choose > 0 && key.Key == ConsoleKey.A)
                 {
-                    Console.SetCursorPosition(27, board_height + 7);
-                    key = Console.ReadKey(true);
-                    if (i + 1 < board_width)
+                    if (players[player_choose].life == true)
                     {
-                        if (key.Key == ConsoleKey.D)
+                        wrong = player_choose;
+                        board.Player_paint(players[player_choose].cursor_Width, players[player_choose].cursor_Height, players[player_choose].blue_red, players[player_choose].type);
+                        while (true)
                         {
-                            if (players[i + 1].life == true)
+                            player_choose--;
+
+                            if (player_choose == 0 && players[0].life == false)
                             {
-                                board.Player_paint(players[i].cursor_Width, players[i].cursor_Height, players[i].blue_red, players[i].type);
-                                i++;
+                                player_choose = wrong;
+                                break;
+                            }
+
+                            if (players[player_choose].life == true)
+                            {
                                 break;
                             }
                         }
                     }
+                }
 
-                    if (i - 1 >= 0)
+
+                if (key.Key == ConsoleKey.Enter)
+                {
+                    if (players[player_choose].life == true)
                     {
-                        if (key.Key == ConsoleKey.A)
+                        if (players[player_choose].blue_red == false && players[player_choose].Availabe_Move(board_width, board_height, blue_players, board, 2) == true
+                           || players[player_choose].blue_red == true && players[player_choose].Availabe_Move(board_width, board_height, red_players, board, 2))
                         {
-                            if (players[i].life == true)
-                            {
-                                board.Player_paint(players[i].cursor_Width, players[i].cursor_Height, players[i].blue_red, players[i].type);
-                                i--;
-                                break;
-                            }
+                            if (blue_red == false)
+                                player_choose_blue = player_choose;
+                            else
+                                player_choose_red = player_choose;
+                            board.Player_paint(players[player_choose].cursor_Width, players[player_choose].cursor_Height, players[player_choose].blue_red, players[player_choose].type);
+                            return player_choose;
                         }
                     }
-
-                    if (key.Key == ConsoleKey.Enter)
-                    {
-                        if (players[i].life == true)
-                        {
-                            board.Player_paint(players[i].cursor_Width, players[i].cursor_Height, players[i].blue_red, players[i].type);
-                            return i;
-                        }
-                    }
-
                 }
             }
+
         }
     }
 }
